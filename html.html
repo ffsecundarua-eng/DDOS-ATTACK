@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ME HACKIE</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: #050505;
+        color: #00ff66;
+        font-family: monospace;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 700px;
+        border: 1px solid #00ff66;
+        padding: 35px;
+        box-shadow: 0 0 30px #00ff6633;
+        background: #080808;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 48px;
+        margin: 0 0 10px;
+        text-shadow: 0 0 15px #00ff66;
+    }
+
+    .subtitle {
+        color: #888;
+        margin-bottom: 30px;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        background: #000;
+        border: 1px solid #00ff66;
+        color: #00ff66;
+        font-family: monospace;
+        outline: none;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        background: #00ff66;
+        border: none;
+        color: #000;
+        font-weight: bold;
+        font-family: monospace;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #00cc55;
+    }
+
+    #terminal {
+        margin-top: 25px;
+        text-align: left;
+        min-height: 130px;
+        border: 1px solid #222;
+        padding: 15px;
+        background: #000;
+        color: #00ff66;
+    }
+
+    .warning {
+        color: #ffcc00;
+        font-size: 12px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>ME HACKIE</h1>
+
+    <div class="subtitle">
+        // CYBER CHALLENGE TERMINAL //
+    </div>
+
+    <input
+        id="target"
+        type="text"
+        placeholder="Digite um nome..."
+    >
+
+    <button onclick="startHack()">
+        [ INICIAR DESAFIO ]
+    </button>
+
+    <div id="terminal">
+        > Sistema aguardando...
+    </div>
+
+    <div class="warning">
+        SIMULAÇÃO — nenhuma invasão ou coleta real é realizada.
+    </div>
+
+</div>
+
+<script>
+function startHack() {
+    const target = document.getElementById("target").value;
+    const terminal = document.getElementById("terminal");
+
+    if (!target) {
+        terminal.innerHTML = "> Digite um nome primeiro.";
+        return;
+    }
+
+    terminal.innerHTML = "> Inicializando...<br>";
+
+    setTimeout(() => {
+        terminal.innerHTML += "> Analisando alvo: "
+            + escapeHTML(target) + "<br>";
+    }, 700);
+
+    setTimeout(() => {
+        terminal.innerHTML += "> Executando simulação...<br>";
+    }, 1400);
+
+    setTimeout(() => {
+        terminal.innerHTML += "> [████████████████] 100%<br>";
+    }, 2100);
+
+    setTimeout(() => {
+        terminal.innerHTML +=
+            "> DESAFIO CONCLUÍDO! ✓";
+    }, 2800);
+}
+
+function escapeHTML(text) {
+    return text.replace(/[&<>"']/g, function(char) {
+        const entities = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;"
+        };
+        return entities[char];
+    });
+}
+</script>
+
+</body>
+</html>
